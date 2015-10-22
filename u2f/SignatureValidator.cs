@@ -13,11 +13,14 @@ namespace u2f
                 || response.ResponseData.ClientData.Challenge != challenge
                 || response.ResponseData.ClientData.Origin != origin
                 || response.ResponseData.ClientData.CId_PubKey != ""
-                //TODO: SignatureData
+                || response.ResponseData.SignatureData.UserPresenceByte != 1
+                //TODO: counter
                 )
             {
                 throw new ApplicationException();
             }
+
+            //TODO: signature
         }
     }
 }

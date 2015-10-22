@@ -9,6 +9,6 @@ namespace u2f
 
         internal U2fClientData ClientData { get; private set; }
 
-        internal string SignatureData { get; private set; }
+        internal U2fSignatureData SignatureData { get; private set; }
     }
 }
