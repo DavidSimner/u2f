@@ -14,7 +14,7 @@ namespace u2f
                 || response.ResponseData.ClientData.Origin != origin
                 || response.ResponseData.ClientData.CId_PubKey != ""
                 || response.ResponseData.SignatureData.UserPresenceByte != 1
-                || response.ResponseData.SignatureData.Counter != counter
+                || response.ResponseData.SignatureData.CounterValue != counter
                 )
             {
                 throw new ApplicationException();
@@ -23,7 +23,7 @@ namespace u2f
             EllipticCurve.LoadPublicKey(userPublicKey).ThrowIfSignatureNotOkay(response.ResponseData.SignatureData.Signature,
                 Hash.String(origin),
                 new byte[] { response.ResponseData.SignatureData.UserPresenceByte },
-                new byte[] { 0, 0, 0, 0 }, //TODO: counter
+                response.ResponseData.SignatureData.CounterBytes,
                 Hash.Array(response.ResponseData.ClientData.Raw));
         }
     }

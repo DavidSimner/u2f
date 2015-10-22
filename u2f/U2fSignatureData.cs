@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Linq;
 
 namespace u2f
 {
@@ -16,7 +18,8 @@ namespace u2f
             {
                 UserPresenceByte = reader.ReadByte();
 
-                Counter = reader.ReadUInt32();
+                CounterBytes = reader.ReadBytes(4);
+                CounterValue = BitConverter.ToUInt32(BitConverter.IsLittleEndian ? CounterBytes.Reverse().ToArray() : CounterBytes, 0);
 
                 Signature = reader.ReadBytes((int)(stream.Length - stream.Position));
             }
@@ -24,7 +27,8 @@ namespace u2f
 
         internal readonly byte UserPresenceByte;
 
-        internal readonly uint Counter;
+        internal readonly byte[] CounterBytes;
+        internal readonly uint CounterValue;
 
         internal readonly byte[] Signature;
     }
