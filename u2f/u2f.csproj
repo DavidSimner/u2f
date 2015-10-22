@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsymmetricKeyParameterExtensions.cs" />
+    <Compile Include="EllipticCurve.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="RegistrationValidator.cs" />

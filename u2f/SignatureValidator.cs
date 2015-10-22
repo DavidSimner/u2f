@@ -20,7 +20,11 @@ namespace u2f
                 throw new ApplicationException();
             }
 
-            //TODO: signature
+            EllipticCurve.LoadPublicKey(userPublicKey).ThrowIfSignatureNotOkay(response.ResponseData.SignatureData.Signature,
+                Hash.String(origin),
+                new byte[] { response.ResponseData.SignatureData.UserPresenceByte },
+                new byte[] { 0, 0, 0, 0 }, //TODO: counter
+                Hash.Array(response.ResponseData.ClientData.Raw));
         }
     }
 }
