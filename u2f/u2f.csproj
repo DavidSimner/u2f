@@ -56,6 +56,7 @@
     <Compile Include="Helpers.cs" />
     <Compile Include="RegistrationValidator.cs" />
     <Compile Include="RootCertificates.cs" />
+    <Compile Include="SignatureValidator.cs" />
     <Compile Include="U2fClientData.cs" />
     <Compile Include="U2fResponse.cs" />
     <Compile Include="Tests.cs" />

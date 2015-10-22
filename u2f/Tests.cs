@@ -36,6 +36,8 @@ namespace u2f
     }
 }";
             var input = JsonConvert.DeserializeObject<U2fResponse<U2fSignResponseData>>(json, Helpers.JsonSerializerSettings);
+
+            new SignatureValidator().Validate(input, "https://www.papaya.me.uk", null, null, "BBBB");
         }
     }
 }
