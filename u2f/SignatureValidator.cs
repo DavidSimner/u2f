@@ -5,7 +5,7 @@ namespace u2f
 {
     internal class SignatureValidator
     {
-        internal void Validate(U2fResponse<U2fSignResponseData> response, string origin, byte[] userPublicKey, byte[] keyHandle, string challenge)
+        internal void Validate(U2fResponse<U2fSignResponseData> response, string origin, byte[] userPublicKey, byte[] keyHandle, string challenge, uint counter)
         {
             if (response.Type != "u2f_sign_response"
                 || !response.ResponseData.KeyHandle.SequenceEqual(keyHandle)
@@ -14,7 +14,7 @@ namespace u2f
                 || response.ResponseData.ClientData.Origin != origin
                 || response.ResponseData.ClientData.CId_PubKey != ""
                 || response.ResponseData.SignatureData.UserPresenceByte != 1
-                || response.ResponseData.SignatureData.Counter != 0 //TODO: another one to force it being an argument
+                || response.ResponseData.SignatureData.Counter != counter
                 )
             {
                 throw new ApplicationException();
