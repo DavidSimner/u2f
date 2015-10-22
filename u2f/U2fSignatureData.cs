@@ -17,11 +17,15 @@ namespace u2f
                 UserPresenceByte = reader.ReadByte();
 
                 Counter = reader.ReadUInt32();
+
+                Signature = reader.ReadBytes((int)(stream.Length - stream.Position));
             }
         }
 
         internal readonly byte UserPresenceByte;
 
         internal readonly uint Counter;
+
+        internal readonly byte[] Signature;
     }
 }
