@@ -21,9 +21,7 @@ namespace u2f
                 throw new ApplicationException();
             }
 
-            //TODO: make this extension method, also check date of yubico, and its self-sig is correct
-            response.ResponseData.RegistrationData.AttestationCertificate.CheckValidity();
-            response.ResponseData.RegistrationData.AttestationCertificate.Verify(RootCertificates.Yubico.GetPublicKey());
+            response.ResponseData.RegistrationData.AttestationCertificate.ThrowIfChainNotOkay(RootCertificates.Yubico);
 
             // TODO: check signature
         }
