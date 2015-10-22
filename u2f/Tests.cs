@@ -23,5 +23,18 @@ namespace u2f
 
             new RegistrationValidator().Validate(input, "https://www.papaya.me.uk", "AAAA");
         }
+
+        [Test]
+        public void ValidSignResponseIsParsedAsValid()
+        {
+            const string json = @"{
+    ""type"": ""u2f_sign_response"",
+    ""responseData"": {
+        ""keyHandle"": ""ybvpL6-qA0xABdbtOhx17_EhSpR1v_iC_tXmIwUWTGOzzEjxOItOM9rDuxx_S7qwjxg4uLjCNAgvEqCoQTUPKg"",
+        ""clientData"": ""eyJ0eXAiOiJuYXZpZ2F0b3IuaWQuZ2V0QXNzZXJ0aW9uIiwiY2hhbGxlbmdlIjoiQkJCQiIsIm9yaWdpbiI6Imh0dHBzOi8vd3d3LnBhcGF5YS5tZS51ayIsImNpZF9wdWJrZXkiOiIifQ"",
+        ""signatureData"": ""AQAAAAAwRgIhAKdaFbjBhcTvr1e3nnoADBlscqpumEHMYUoZjSRzXFCPAiEA9nY7k4b1xQYYs4whrPMnStvikF69Vd8xB6rcOOxMLR4""
+    }
+}";
+        }
     }
 }
