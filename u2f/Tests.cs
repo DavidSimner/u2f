@@ -9,7 +9,7 @@ namespace u2f
         [Test]
         public void ValidRegisterResponseIsParsedAsValid()
         {
-            var json = @"{
+            const string json = @"{
     ""type"": ""u2f_register_response"",
     ""responseData"": {
         ""version"": ""U2F_V2"",
