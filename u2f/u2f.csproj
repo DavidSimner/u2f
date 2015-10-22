@@ -64,6 +64,7 @@
     <Compile Include="U2fRegisterResponseData.cs" />
     <Compile Include="U2fRegistrationData.cs" />
     <Compile Include="U2fSignResponseData.cs" />
+    <Compile Include="WebSafeBinaryConverter.cs" />
     <Compile Include="X509CertificateExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

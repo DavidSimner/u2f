@@ -1,8 +1,11 @@
-﻿namespace u2f
+﻿using Newtonsoft.Json;
+
+namespace u2f
 {
     internal class U2fSignResponseData
     {
-        internal string KeyHandle { get; private set; }
+        [JsonConverter(typeof(WebSafeBinaryConverter))]
+        internal byte[] KeyHandle { get; private set; }
 
         internal U2fClientData ClientData { get; private set; }
 
