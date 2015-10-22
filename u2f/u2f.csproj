@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Helpers.cs" />
     <Compile Include="RegistrationValidator.cs" />
+    <Compile Include="RootCertificates.cs" />
     <Compile Include="U2fClientData.cs" />
     <Compile Include="U2fRegisterResponse.cs" />
     <Compile Include="Tests.cs" />
