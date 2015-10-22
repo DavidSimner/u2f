@@ -26,7 +26,7 @@ namespace u2f
             response.ResponseData.RegistrationData.AttestationCertificate.GetPublicKey().ThrowIfSignatureNotOkay(response.ResponseData.RegistrationData.Signature,
                 new byte[] { 0 },
                 Hash.String(origin),
-                Hash.String(response.ResponseData.ClientData.Raw),
+                Hash.Array(response.ResponseData.ClientData.Raw),
                 response.ResponseData.RegistrationData.KeyHandle,
                 response.ResponseData.RegistrationData.UserPublicKey);
         }

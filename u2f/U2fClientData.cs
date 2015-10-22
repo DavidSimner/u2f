@@ -7,16 +7,16 @@ namespace u2f
     {
         public static explicit operator U2fClientData(string value)
         {
-            return new U2fClientData(value);
+            return new U2fClientData(Helpers.Base64Decode(value));
         }
 
-        private U2fClientData(string value)
+        private U2fClientData(byte[] value)
         {
             Raw = value;
-            JsonConvert.PopulateObject(Encoding.ASCII.GetString(Helpers.Base64Decode(value)), this, Helpers.JsonSerializerSettings);
+            JsonConvert.PopulateObject(Encoding.ASCII.GetString(value), this, Helpers.JsonSerializerSettings);
         }
 
-        internal readonly string Raw;
+        internal readonly byte[] Raw;
 
         internal string Typ { get; private set; }
 

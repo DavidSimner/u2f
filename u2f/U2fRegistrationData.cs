@@ -7,12 +7,12 @@ namespace u2f
     {
         public static explicit operator U2fRegistrationData(string value)
         {
-            return new U2fRegistrationData(value);
+            return new U2fRegistrationData(Helpers.Base64Decode(value));
         }
 
-        private U2fRegistrationData(string value)
+        private U2fRegistrationData(byte[] value)
         {
-            using (var stream = new MemoryStream(Helpers.Base64Decode(value), false))
+            using (var stream = new MemoryStream(value, false))
             using (var reader = new BinaryReader(stream))
             {
                 ReservedByte = reader.ReadByte();
