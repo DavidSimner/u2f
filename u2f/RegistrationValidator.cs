@@ -1,6 +1,5 @@
 ﻿using Org.BouncyCastle.X509;
 using System;
-using System.IO;
 using System.Text;
 
 namespace u2f
