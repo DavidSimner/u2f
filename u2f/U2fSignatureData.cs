@@ -15,9 +15,13 @@ namespace u2f
             using (var reader = new BinaryReader(stream))
             {
                 UserPresenceByte = reader.ReadByte();
+
+                Counter = reader.ReadUInt32();
             }
         }
 
         internal readonly byte UserPresenceByte;
+
+        internal readonly uint Counter;
     }
 }

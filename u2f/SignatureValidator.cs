@@ -14,7 +14,7 @@ namespace u2f
                 || response.ResponseData.ClientData.Origin != origin
                 || response.ResponseData.ClientData.CId_PubKey != ""
                 || response.ResponseData.SignatureData.UserPresenceByte != 1
-                //TODO: counter
+                || response.ResponseData.SignatureData.Counter != 0 //TODO: another one to force it being an argument
                 )
             {
                 throw new ApplicationException();
