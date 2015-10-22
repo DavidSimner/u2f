@@ -35,6 +35,7 @@ namespace u2f
         ""signatureData"": ""AQAAAAAwRgIhAKdaFbjBhcTvr1e3nnoADBlscqpumEHMYUoZjSRzXFCPAiEA9nY7k4b1xQYYs4whrPMnStvikF69Vd8xB6rcOOxMLR4""
     }
 }";
+            var input = JsonConvert.DeserializeObject<U2fResponse<U2fSignResponseData>>(json, Helpers.JsonSerializerSettings);
         }
     }
 }
