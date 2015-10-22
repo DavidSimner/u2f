@@ -7,7 +7,8 @@ namespace ConsoleApplication1
         private static void Main()
         {
             new Tests().ValidRegisterResponseIsParsedAsValid();
-            new Tests().ValidSignResponseIsParsedAsValid();
+            new Tests().TheFirstValidSignResponseIsParsedAsValid();
+            new Tests().TheSecondValidSignResponseIsParsedAsValid();
         }
     }
 }
