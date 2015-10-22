@@ -4,7 +4,7 @@ namespace u2f
 {
     internal class RegistrationValidator
     {
-        internal void Validate(U2fRegisterResponse response, string origin, string challenge)
+        internal void Validate(U2fResponse<U2fRegisterResponseData> response, string origin, string challenge)
         {
             if (response.Type != "u2f_register_response"
                 || response.ResponseData.Version != "U2F_V2"

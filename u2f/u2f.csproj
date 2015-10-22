@@ -57,7 +57,7 @@
     <Compile Include="RegistrationValidator.cs" />
     <Compile Include="RootCertificates.cs" />
     <Compile Include="U2fClientData.cs" />
-    <Compile Include="U2fRegisterResponse.cs" />
+    <Compile Include="U2fResponse.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="U2fRegisterResponseData.cs" />
