@@ -1,5 +1,4 @@
-﻿using Org.BouncyCastle.X509;
-using System.IO;
+﻿using System.IO;
 
 namespace u2f
 {
@@ -21,9 +20,8 @@ namespace u2f
 
                 KeyHandle = reader.ReadBytes(reader.ReadByte());
 
-                AttestationCertificate = new X509CertificateParser().ReadCertificate(stream);
 
-                Signature = reader.ReadBytes((int)(stream.Length - stream.Position));
+                AttestationCertificateAndSignature = reader.ReadBytes((int)(stream.Length - stream.Position));
             }
         }
 
@@ -33,8 +31,6 @@ namespace u2f
 
         internal readonly byte[] KeyHandle;
 
-        internal readonly X509Certificate AttestationCertificate;
-
-        internal readonly byte[] Signature;
+        internal readonly byte[] AttestationCertificateAndSignature;
     }
 }

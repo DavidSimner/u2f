@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
+using Org.BouncyCastle.X509;
 
 namespace u2f
 {
@@ -21,17 +24,19 @@ namespace u2f
                 throw new ApplicationException();
             }
 
-            var attestationCertificate = response.ResponseData.RegistrationData.AttestationCertificate;
+            using (var stream = new MemoryStream(response.ResponseData.RegistrationData.AttestationCertificateAndSignature, false))
+            {
+                var attestationCertificate = new X509CertificateParser().ReadCertificate(stream);
+                attestationCertificate.ThrowIfChainNotOkay(RootCertificates.Yubico);
 
-            attestationCertificate.ThrowIfChainNotOkay(RootCertificates.Yubico);
-
-
-            attestationCertificate.GetPublicKey().ThrowIfSignatureNotOkay(response.ResponseData.RegistrationData.Signature,
-                new byte[] { 0 },
-                Hash.String(origin),
-                Hash.Array(response.ResponseData.ClientData.Raw),
-                response.ResponseData.RegistrationData.KeyHandle,
-                response.ResponseData.RegistrationData.UserPublicKey);
+                var signature = stream.ToArray().Skip((int) stream.Position).ToArray();
+                attestationCertificate.GetPublicKey().ThrowIfSignatureNotOkay(signature,
+                    new byte[] { 0 },
+                    Hash.String(origin),
+                    Hash.Array(response.ResponseData.ClientData.Raw),
+                    response.ResponseData.RegistrationData.KeyHandle,
+                    response.ResponseData.RegistrationData.UserPublicKey);
+            }
         }
     }
 }
