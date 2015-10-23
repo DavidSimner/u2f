@@ -24,7 +24,7 @@ namespace u2f
 
             EllipticCurve.LoadPublicKey(userPublicKey).ThrowIfSignatureNotOkay(response.ResponseData.SignatureData.Signature,
                 Hash.String(origin),
-                new byte[] { response.ResponseData.SignatureData.UserPresenceByte },
+                new[] { response.ResponseData.SignatureData.UserPresenceByte },
                 response.ResponseData.SignatureData.CounterBytes,
                 Hash.Array(response.ResponseData.ClientData.Raw));
         }
