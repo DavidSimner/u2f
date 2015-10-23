@@ -21,10 +21,11 @@ namespace u2f
                 throw new ApplicationException();
             }
 
-            response.ResponseData.RegistrationData.AttestationCertificate.ThrowIfChainNotOkay(RootCertificates.Yubico);
+            var attestationCertificate = response.ResponseData.RegistrationData.AttestationCertificate;
 
+            attestationCertificate.ThrowIfChainNotOkay(RootCertificates.Yubico);
 
-            response.ResponseData.RegistrationData.AttestationCertificate.GetPublicKey().ThrowIfSignatureNotOkay(response.ResponseData.RegistrationData.Signature,
+            attestationCertificate.GetPublicKey().ThrowIfSignatureNotOkay(response.ResponseData.RegistrationData.Signature,
                 new byte[] { 0 },
                 Hash.String(origin),
                 Hash.Array(response.ResponseData.ClientData.Raw),
