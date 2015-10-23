@@ -25,6 +25,7 @@ namespace u2f
 
             attestationCertificate.ThrowIfChainNotOkay(RootCertificates.Yubico);
 
+
             attestationCertificate.GetPublicKey().ThrowIfSignatureNotOkay(response.ResponseData.RegistrationData.Signature,
                 new byte[] { 0 },
                 Hash.String(origin),
