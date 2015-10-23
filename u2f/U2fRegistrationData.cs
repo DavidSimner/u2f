@@ -20,7 +20,6 @@ namespace u2f
 
                 KeyHandle = reader.ReadBytes(reader.ReadByte());
 
-
                 AttestationCertificateAndSignature = reader.ReadBytes((int)(stream.Length - stream.Position));
             }
         }
