@@ -23,6 +23,7 @@ namespace u2f
 
             response.ResponseData.RegistrationData.AttestationCertificate.ThrowIfChainNotOkay(RootCertificates.Yubico);
 
+
             response.ResponseData.RegistrationData.AttestationCertificate.GetPublicKey().ThrowIfSignatureNotOkay(response.ResponseData.RegistrationData.Signature,
                 new byte[] { 0 },
                 Hash.String(origin),
