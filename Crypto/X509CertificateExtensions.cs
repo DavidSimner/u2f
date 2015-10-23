@@ -1,10 +1,10 @@
 ﻿using Org.BouncyCastle.X509;
 
-namespace u2f
+namespace Crypto
 {
-    internal static class X509CertificateExtensions
+    public static class X509CertificateExtensions
     {
-        internal static void ThrowIfChainNotOkay(this X509Certificate leaf, X509Certificate root)
+        public static void ThrowIfChainNotOkay(this X509Certificate leaf, X509Certificate root)
         {
             var rootPublicKey = root.GetPublicKey();
 

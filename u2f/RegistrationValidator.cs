@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using Crypto;
 using Org.BouncyCastle.X509;
 using u2f.DTOs;
 

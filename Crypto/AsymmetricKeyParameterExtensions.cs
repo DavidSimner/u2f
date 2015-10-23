@@ -3,11 +3,11 @@ using Org.BouncyCastle.Crypto.Digests;
 using Org.BouncyCastle.Crypto.Signers;
 using System;
 
-namespace u2f
+namespace Crypto
 {
-    internal static class AsymmetricKeyParameterExtensions
+    public static class AsymmetricKeyParameterExtensions
     {
-        internal static void ThrowIfSignatureNotOkay(this AsymmetricKeyParameter publicKey, byte[] signature, params byte[][] inputs)
+        public static void ThrowIfSignatureNotOkay(this AsymmetricKeyParameter publicKey, byte[] signature, params byte[][] inputs)
         {
             var signer = new DsaDigestSigner(new ECDsaSigner(), new Sha256Digest());
             signer.Init(false, publicKey);

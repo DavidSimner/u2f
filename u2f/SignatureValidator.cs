@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Crypto;
 using u2f.DTOs;
 
 namespace u2f

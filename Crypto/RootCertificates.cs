@@ -1,11 +1,11 @@
 ﻿using Org.BouncyCastle.X509;
 using System.Text;
 
-namespace u2f
+namespace Crypto
 {
-    internal static class RootCertificates
+    public static class RootCertificates
     {
-        internal static readonly X509Certificate Yubico = Parse(@"-----BEGIN CERTIFICATE-----
+        public static readonly X509Certificate Yubico = Parse(@"-----BEGIN CERTIFICATE-----
 MIIDHjCCAgagAwIBAgIEG0BT9zANBgkqhkiG9w0BAQsFADAuMSwwKgYDVQQDEyNZ
 dWJpY28gVTJGIFJvb3QgQ0EgU2VyaWFsIDQ1NzIwMDYzMTAgFw0xNDA4MDEwMDAw
 MDBaGA8yMDUwMDkwNDAwMDAwMFowLjEsMCoGA1UEAxMjWXViaWNvIFUyRiBSb290
