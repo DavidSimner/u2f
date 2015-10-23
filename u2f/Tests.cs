@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using NUnit.Framework;
+using u2f.DTOs;
 
 namespace u2f
 {

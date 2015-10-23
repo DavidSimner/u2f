@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace u2f
+namespace u2f.DTOs
 {
     internal class U2fSignResponseData
     {

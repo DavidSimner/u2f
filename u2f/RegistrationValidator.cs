@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using Org.BouncyCastle.X509;
+using u2f.DTOs;
 
 namespace u2f
 {

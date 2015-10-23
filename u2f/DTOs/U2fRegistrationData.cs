@@ -1,6 +1,6 @@
-﻿using System.IO;
+using System.IO;
 
-namespace u2f
+namespace u2f.DTOs
 {
     internal class U2fRegistrationData
     {

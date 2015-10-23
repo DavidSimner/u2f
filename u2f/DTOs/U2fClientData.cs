@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Text;
 
-namespace u2f
+namespace u2f.DTOs
 {
     internal class U2fClientData
     {
