@@ -22,7 +22,7 @@ namespace u2f
                 throw new ApplicationException();
             }
 
-            EllipticCurve.LoadPublicKey(userPublicKey).ThrowIfSignatureNotOkay(response.ResponseData.SignatureData.Signature,
+            new PublicKey(EllipticCurve.LoadPublicKey(userPublicKey)).ThrowIfSignatureNotOkay(response.ResponseData.SignatureData.Signature,
                 Hash.String(origin),
                 new[] { response.ResponseData.SignatureData.UserPresenceByte },
                 response.ResponseData.SignatureData.CounterBytes,

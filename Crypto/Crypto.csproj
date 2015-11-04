@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsymmetricKeyParameterExtensions.cs" />
+    <Compile Include="PublicKey.cs" />
     <Compile Include="EllipticCurve.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

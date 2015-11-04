@@ -32,7 +32,7 @@ namespace u2f
                 attestationCertificate.ThrowIfChainNotOkay(RootCertificates.Yubico);
 
                 var signature = stream.ToArray().Skip((int) stream.Position).ToArray();
-                attestationCertificate.GetPublicKey().ThrowIfSignatureNotOkay(signature,
+                new PublicKey(attestationCertificate.GetPublicKey()).ThrowIfSignatureNotOkay(signature,
                     new byte[] { 0 },
                     Hash.String(origin),
                     Hash.Array(response.ResponseData.ClientData.Raw),
