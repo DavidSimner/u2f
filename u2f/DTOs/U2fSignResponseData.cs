@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using u2f.Converters;
 
 namespace u2f.DTOs
 {

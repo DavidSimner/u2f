@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace u2f
+namespace u2f.Converters
 {
     internal class WebSafeBinaryConverter : JsonConverter
     {
