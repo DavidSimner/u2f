@@ -1,4 +1,4 @@
-﻿using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Digests;
 using Org.BouncyCastle.Crypto.Signers;
 using System;
@@ -7,6 +7,8 @@ namespace Crypto
 {
     public static class AsymmetricKeyParameterExtensions
     {
+
+
         public static void ThrowIfSignatureNotOkay(this AsymmetricKeyParameter publicKey, byte[] signature, params byte[][] inputs)
         {
             var signer = new DsaDigestSigner(new ECDsaSigner(), new Sha256Digest());
