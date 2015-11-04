@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using Crypto;
-using Org.BouncyCastle.X509;
 using u2f.DTOs;
 
 namespace u2f
@@ -28,7 +27,7 @@ namespace u2f
 
             using (var stream = new MemoryStream(response.ResponseData.RegistrationData.AttestationCertificateAndSignature, false))
             {
-                var attestationCertificate = new X509CertificateParser().ReadCertificate(stream);
+                var attestationCertificate = X509CertificateExtensions.Load(stream);
                 attestationCertificate.ThrowIfChainNotOkay(RootCertificates.Yubico);
 
                 var signature = stream.ToArray().Skip((int) stream.Position).ToArray();

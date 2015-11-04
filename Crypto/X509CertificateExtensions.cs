@@ -1,3 +1,4 @@
+using System.IO;
 using Org.BouncyCastle.X509;
 
 namespace Crypto
@@ -5,6 +6,10 @@ namespace Crypto
     public static class X509CertificateExtensions
     {
 
+        public static X509Certificate Load(Stream stream)
+        {
+            return new X509CertificateParser().ReadCertificate(stream);
+        }
 
 
 
