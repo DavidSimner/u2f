@@ -9,7 +9,7 @@ namespace Crypto
     {
         private readonly AsymmetricKeyParameter _publicKey;
 
-        public PublicKey(AsymmetricKeyParameter publicKey)
+        internal PublicKey(AsymmetricKeyParameter publicKey)
         {
             _publicKey = publicKey;
         }

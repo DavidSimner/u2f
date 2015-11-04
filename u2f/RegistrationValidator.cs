@@ -27,11 +27,11 @@ namespace u2f
 
             using (var stream = new MemoryStream(response.ResponseData.RegistrationData.AttestationCertificateAndSignature, false))
             {
-                var attestationCertificate = X509CertificateExtensions.Load(stream);
+                var attestationCertificate = Certificate.Load(stream);
                 attestationCertificate.ThrowIfChainNotOkay(RootCertificates.Yubico);
 
                 var signature = stream.ToArray().Skip((int) stream.Position).ToArray();
-                new PublicKey(attestationCertificate.GetPublicKey()).ThrowIfSignatureNotOkay(signature,
+                attestationCertificate.PublicKey.ThrowIfSignatureNotOkay(signature,
                     new byte[] { 0 },
                     Hash.String(origin),
                     Hash.Array(response.ResponseData.ClientData.Raw),
