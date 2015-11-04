@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 using Org.BouncyCastle.X509;
 
 namespace Crypto
@@ -10,6 +11,11 @@ namespace Crypto
         public static Certificate Load(Stream stream)
         {
             return new Certificate(new X509CertificateParser().ReadCertificate(stream));
+        }
+
+        internal static Certificate Load(string value)
+        {
+            return new Certificate(new X509CertificateParser().ReadCertificate(Encoding.ASCII.GetBytes(value)));
         }
 
         private Certificate(X509Certificate _certificate)
@@ -25,12 +31,12 @@ namespace Crypto
             }
         }
 
-        public void ThrowIfChainNotOkay(X509Certificate root)
+        public void ThrowIfChainNotOkay(Certificate root)
         {
-            var rootPublicKey = root.GetPublicKey();
+            var rootPublicKey = root._certificate.GetPublicKey();
 
-            root.Verify(rootPublicKey);
-            root.CheckValidity();
+            root._certificate.Verify(rootPublicKey);
+            root._certificate.CheckValidity();
 
             _certificate.Verify(rootPublicKey);
             _certificate.CheckValidity();

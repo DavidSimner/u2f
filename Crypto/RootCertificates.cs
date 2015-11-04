@@ -1,11 +1,8 @@
-﻿using Org.BouncyCastle.X509;
-using System.Text;
-
-namespace Crypto
+﻿namespace Crypto
 {
     public static class RootCertificates
     {
-        public static readonly X509Certificate Yubico = Parse(@"-----BEGIN CERTIFICATE-----
+        public static readonly Certificate Yubico = Certificate.Load(@"-----BEGIN CERTIFICATE-----
 MIIDHjCCAgagAwIBAgIEG0BT9zANBgkqhkiG9w0BAQsFADAuMSwwKgYDVQQDEyNZ
 dWJpY28gVTJGIFJvb3QgQ0EgU2VyaWFsIDQ1NzIwMDYzMTAgFw0xNDA4MDEwMDAw
 MDBaGA8yMDUwMDkwNDAwMDAwMFowLjEsMCoGA1UEAxMjWXViaWNvIFUyRiBSb290
@@ -24,10 +21,5 @@ LVVee6/VR6C5+KSTCMCWppMuJIZII2v9o4dkoZ8Y7QRjQlLfYzd3qGtKbw7xaF1U
 sG/5xUb/Btwb2X2g4InpiB/yt/3CpQXpiWX/K4mBvUKiGn05ZsqeY1gx4g0xLBqc
 U9psmyPzK+Vsgw2jeRQ5JlKDyqE0hebfC1tvFu0CCrJFcw==
 -----END CERTIFICATE-----");
-
-        private static X509Certificate Parse(string value)
-        {
-            return new X509CertificateParser().ReadCertificate(Encoding.ASCII.GetBytes(value));
-        }
     }
 }
